@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  padding: 100px 0;
+}
+
+.container {
+  max-width: 1900px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+input:focus {
+  outline:none;
+}

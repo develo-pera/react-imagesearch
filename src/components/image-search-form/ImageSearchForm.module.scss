@@ -1,0 +1,31 @@
+@import '../../styles/variables/colors';
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 120px 0;
+}
+
+.input {
+  height: 60px;
+  width: 100%;
+  max-width: 350px;
+  padding: 0 10px;
+
+  &:focus {
+    border: 1px solid $purple;
+  }
+}
+
+.button {
+  height: 60px;
+  padding: 0 30px;
+  color: $white;
+  border: none;
+  background: $purple;
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
