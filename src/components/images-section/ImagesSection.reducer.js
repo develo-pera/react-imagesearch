@@ -4,7 +4,7 @@ const INIT_STATE = {
   isLoading: false,
   isError: false,
   isSuccess: false,
-  images: null,
+  fetchedImages: null,
   currentPage: null,
 }
 
@@ -23,7 +23,10 @@ export default function imagesReducer(state = INIT_STATE, action) {
         isLoading: false,
         isError: false,
         isSuccess: true,
-        images: action.payload.results,
+        fetchedImages: {
+          ...state.images,
+          [action.payload.currentPage]: action.payload.results,
+        },
         currentPage: action.payload.currentPage,
       }
     case ACTION_TYPES.FETCH_IMAGES_BY_SEARCH_TERM_FAIL:
