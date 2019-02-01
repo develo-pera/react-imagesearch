@@ -1,0 +1,50 @@
+@import '../../../styles/variables/colors';
+
+.formWrapper {
+  margin: 120px 0;
+  text-align: center;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  height: 60px;
+  width: 100%;
+  max-width: 350px;
+  padding: 0 10px;
+
+  &:focus {
+    border: 1px solid $purple;
+  }
+}
+
+.button {
+  height: 60px;
+  padding: 0 30px;
+  color: $white;
+  border: none;
+  background: $purple;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: .8;
+  }
+}
+
+.errorMessage {
+  color: $errorRed;
+  font-size: 13px;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+}
