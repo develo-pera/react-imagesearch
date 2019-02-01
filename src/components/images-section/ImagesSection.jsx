@@ -10,6 +10,7 @@ import ImagesList from './images-list/ImagesList'
 const ImagesSection = ({
   imagesArray,
   currentPage,
+  loadingImagesInProgress,
 }) => {
   const imagesArrayForPage = imagesArray &&
     currentPage &&
@@ -20,6 +21,7 @@ const ImagesSection = ({
       <ImageSearchForm />
       <ImagesList
         imagesArray={imagesArrayForPage}
+        loadingImagesInProgress={loadingImagesInProgress}
       />
     </React.Fragment>
   )
@@ -31,6 +33,7 @@ ImagesSection.propTypes = {
     PropTypes.shape()
   ),
   currentPage: PropTypes.number,
+  loadingImagesInProgress: PropTypes.bool.isRequired,
 }
 
 ImagesSection.defaultProps = {
@@ -41,6 +44,7 @@ ImagesSection.defaultProps = {
 const mapStateToProps = state => ({
   imagesArray: state.images.fetchedImages,
   currentPage: state.images.currentPage,
+  loadingImagesInProgress: state.images.isLoading,
 })
 
 export default connect(mapStateToProps)(ImagesSection)
