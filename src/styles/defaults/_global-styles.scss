@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .page-wrapper {
   padding: 100px 0;
 }
@@ -15,4 +20,8 @@
 input:focus,
 button:focus {
   outline:none;
+}
+
+.emoji {
+  font-size: 26px;
 }
