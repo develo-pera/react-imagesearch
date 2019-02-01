@@ -12,6 +12,7 @@
   padding-right: 30px;
 }
 
-input:focus {
+input:focus,
+button:focus {
   outline:none;
 }
