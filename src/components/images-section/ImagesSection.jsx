@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import returnImagesArrayForPageNumber from './ImagesSection.helpers'
+import { returnImagesArrayForPageNumber } from './ImagesSection.helpers'
 
 import ImageSearchForm from './image-search-form/ImageSearchForm'
 import ImagesList from './images-list/ImagesList'
@@ -11,8 +11,9 @@ const ImagesSection = ({
   imagesArray,
   currentPage,
 }) => {
-  const imagesArrayForPage = imagesArray && currentPage ?
-    returnImagesArrayForPageNumber(imagesArray, currentPage) : null
+  const imagesArrayForPage = imagesArray &&
+    currentPage &&
+    returnImagesArrayForPageNumber(imagesArray, currentPage)
 
   return (
     <React.Fragment>
@@ -28,11 +29,12 @@ const ImagesSection = ({
 ImagesSection.propTypes = {
   imagesArray: PropTypes.arrayOf(
     PropTypes.shape()
-  ).isRequired,
+  ),
   currentPage: PropTypes.number,
 }
 
 ImagesSection.defaultProps = {
+  imagesArray: null,
   currentPage: null,
 }
 
