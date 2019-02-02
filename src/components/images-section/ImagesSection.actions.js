@@ -23,6 +23,7 @@ export function getImagesBySearchTermAndPage(searchTerm, page = 1) {
         payload: {
           ...response.data,
           currentPage: page,
+          searchedTerm: searchTerm,
         },
       })
 

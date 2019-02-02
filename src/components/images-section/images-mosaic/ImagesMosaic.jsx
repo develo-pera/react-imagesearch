@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ReactPaginate from 'react-paginate'
 
 import { reorderImagesForMosaicDisplay } from '../ImagesSection.helpers'
 import mosaicColumnNumber from '../imagesSection.constants'
@@ -34,14 +35,39 @@ const renderNoResultsMessage = () => (
   </div>
 )
 
-const ImagesMosaic = ({ images }) => (
+const ImagesMosaic = ({
+  images,
+  searchedTerm,
+  currentPage,
+  totalPageNumber,
+  getImagesBySearchTermAndPage,
+}) => (
   <div>
     {
       images &&
       images.length > 0 ?
       // mosaicColumnNumber must match column-count property of .mosaic
       // in ImagesMosaic.module.scss in order to work properly
-        renderMosaic(images, mosaicColumnNumber)
+        (
+          <React.Fragment>
+            { renderMosaic(images, mosaicColumnNumber) }
+            <ReactPaginate
+              previousLabel="previous"
+              nextLabel="next"
+              breakLabel="..."
+              breakClassName="break-me"
+              forcePage={currentPage - 1}
+              pageCount={totalPageNumber}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={
+                number => getImagesBySearchTermAndPage(searchedTerm, number.selected + 1)
+              }
+              containerClassName={styles.pagination}
+              activeClassName={styles.active}
+            />
+          </React.Fragment>
+        )
         : renderNoResultsMessage()
     }
   </div>
@@ -51,6 +77,10 @@ ImagesMosaic.propTypes = {
   images: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.shape()),
   ]).isRequired,
+  searchedTerm: PropTypes.string.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  totalPageNumber: PropTypes.number.isRequired,
+  getImagesBySearchTermAndPage: PropTypes.func.isRequired,
 }
 
 export default ImagesMosaic

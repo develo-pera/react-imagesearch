@@ -5,7 +5,9 @@ const INIT_STATE = {
   isError: false,
   isSuccess: false,
   fetchedImages: null,
+  searchedTerm: '',
   currentPage: null,
+  totalPages: null,
 }
 
 export default function imagesReducer(state = INIT_STATE, action) {
@@ -27,7 +29,9 @@ export default function imagesReducer(state = INIT_STATE, action) {
           ...state.images,
           [action.payload.currentPage]: action.payload.results,
         },
+        searchedTerm: action.payload.searchedTerm,
         currentPage: action.payload.currentPage,
+        totalPages: action.payload.total_pages,
       }
     case ACTION_TYPES.FETCH_IMAGES_BY_SEARCH_TERM_FAIL:
       return {
