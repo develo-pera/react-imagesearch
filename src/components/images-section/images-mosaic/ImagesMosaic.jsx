@@ -36,6 +36,7 @@ const renderNoResultsMessage = () => (
 )
 
 const ImagesMosaic = ({
+  cachedImages,
   images,
   searchedTerm,
   currentPage,
@@ -61,7 +62,9 @@ const ImagesMosaic = ({
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               onPageChange={
-                number => getImagesBySearchTermAndPage(searchedTerm, number.selected + 1)
+                number => (
+                  getImagesBySearchTermAndPage(searchedTerm, number.selected + 1, cachedImages)
+                )
               }
               containerClassName={styles.pagination}
               activeClassName={styles.active}
@@ -74,6 +77,9 @@ const ImagesMosaic = ({
 )
 
 ImagesMosaic.propTypes = {
+  cachedImages: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape()),
+  ]).isRequired,
   images: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.shape()),
   ]).isRequired,

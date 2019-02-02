@@ -7,7 +7,8 @@ import ImagesMosaic from '../images-mosaic/ImagesMosaic'
 import Loader from '../../common/loader/Loader'
 
 const ImagesList = ({
-  imagesArray,
+  cachedImages,
+  imagesArrayForDisplay,
   searchedTerm,
   currentPage,
   totalPageNumber,
@@ -20,16 +21,17 @@ const ImagesList = ({
       <Loader />
     }
     {
-      imagesArray === null &&
+      imagesArrayForDisplay === null &&
       !loadingImagesInProgress &&
       <CompanyLogo />
     }
     {
-      imagesArray &&
+      imagesArrayForDisplay &&
       !loadingImagesInProgress &&
       (
         <ImagesMosaic
-          images={imagesArray}
+          cachedImages={cachedImages}
+          images={imagesArrayForDisplay}
           currentPage={currentPage}
           searchedTerm={searchedTerm}
           totalPageNumber={totalPageNumber}
@@ -41,7 +43,10 @@ const ImagesList = ({
 )
 
 ImagesList.propTypes = {
-  imagesArray: PropTypes.oneOfType([
+  cachedImages: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape()),
+  ]),
+  imagesArrayForDisplay: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.shape()),
   ]),
   searchedTerm: PropTypes.string.isRequired,
@@ -52,7 +57,8 @@ ImagesList.propTypes = {
 }
 
 ImagesList.defaultProps = {
-  imagesArray: null,
+  cachedImages: null,
+  imagesArrayForDisplay: null,
   totalPageNumber: 0,
 }
 

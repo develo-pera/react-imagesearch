@@ -24,7 +24,8 @@ const ImagesSection = ({
     <React.Fragment>
       <ImageSearchForm />
       <ImagesList
-        imagesArray={imagesArrayForPage}
+        cachedImages={imagesArray}
+        imagesArrayForDisplay={imagesArrayForPage}
         searchedTerm={searchedTerm}
         currentPage={currentPage}
         totalPageNumber={totalPageNumber}
@@ -34,7 +35,6 @@ const ImagesSection = ({
     </React.Fragment>
   )
 }
-
 
 ImagesSection.propTypes = {
   imagesArray: PropTypes.arrayOf(

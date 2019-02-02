@@ -26,7 +26,7 @@ export default function imagesReducer(state = INIT_STATE, action) {
         isError: false,
         isSuccess: true,
         fetchedImages: {
-          ...state.images,
+          ...state.fetchedImages,
           [action.payload.currentPage]: action.payload.results,
         },
         searchedTerm: action.payload.searchedTerm,
@@ -39,6 +39,11 @@ export default function imagesReducer(state = INIT_STATE, action) {
         isLoading: false,
         isError: true,
         isSuccess: false,
+      }
+    case ACTION_TYPES.GET_IMAGES_FROM_CACHED_DATA:
+      return {
+        ...state,
+        currentPage: action.payload.currentPage,
       }
     default:
       return state
