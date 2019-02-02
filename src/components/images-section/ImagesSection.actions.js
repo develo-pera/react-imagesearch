@@ -45,7 +45,7 @@ const showFetchApiError = dispatch => (
   dispatch({
     type: ACTION_TYPES.FETCH_IMAGES_BY_SEARCH_TERM_FAIL,
     payload: {
-      errorMessage: 'Unsplash anvailable. Please check that your credentials are right',
+      errorMessage: 'Unsplash unavailable. Please check that your credentials are right',
     },
   })
 )
