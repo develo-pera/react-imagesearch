@@ -3,6 +3,7 @@ import ACTION_TYPES from './ImagesSection.actionTypes'
 const INIT_STATE = {
   isLoading: false,
   isError: false,
+  errorMessage: '',
   isSuccess: false,
   fetchedImages: null,
   searchedTerm: '',
@@ -17,6 +18,7 @@ export default function imagesReducer(state = INIT_STATE, action) {
         ...state,
         isLoading: true,
         isError: false,
+        errorMessage: '',
         isSuccess: false,
       }
     case ACTION_TYPES.FETCH_IMAGES_BY_SEARCH_TERM_SUCCESS:
@@ -38,6 +40,7 @@ export default function imagesReducer(state = INIT_STATE, action) {
         ...state,
         isLoading: false,
         isError: true,
+        errorMessage: action.payload.errorMessage,
         isSuccess: false,
       }
     case ACTION_TYPES.GET_IMAGES_FROM_CACHED_DATA:

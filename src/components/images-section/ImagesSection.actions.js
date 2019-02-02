@@ -35,12 +35,20 @@ const parseRetrievedDataFromApi = (dispatch, response, page, searchTerm) => (
   })
 )
 
+const showFetchApiError = dispatch => (
+  dispatch({
+    type: ACTION_TYPES.FETCH_IMAGES_BY_SEARCH_TERM_FAIL,
+    payload: {
+      errorMessage: 'Unsplash anvailable. Please check that your credentials are right',
+    },
+  })
+)
+
 export function getImagesBySearchTermAndPage(searchTerm, page = 1, cachedData) {
   return async (dispatch) => {
     // Check if we already have data for that page and if we do
     // serve chaced data, otherwise call an API
     if (cachedData && checkForCachedData(cachedData, page)) {
-      console.log(page)
       serveCachedData(dispatch, page)
     } else {
       dispatch({
@@ -51,7 +59,7 @@ export function getImagesBySearchTermAndPage(searchTerm, page = 1, cachedData) {
         const response = await getImagesBySearchTermAndPageApi(searchTerm, page)
         parseRetrievedDataFromApi(dispatch, response, page, searchTerm)
       } catch (e) {
-        console.log(e)
+        showFetchApiError(dispatch)
       }
     }
   }

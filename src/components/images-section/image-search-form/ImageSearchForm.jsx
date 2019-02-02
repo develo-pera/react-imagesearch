@@ -50,6 +50,8 @@ class ImageSearch extends Component {
       errorMessage,
     } = this.state
 
+    const { apiErrorMessage } = this.props
+
     return (
       <div className={styles.formWrapper}>
         <form
@@ -71,9 +73,18 @@ class ImageSearch extends Component {
         </form>
         {
           errorMessage &&
+          !apiErrorMessage &&
           (
             <p className={styles.errorMessage}>
               {errorMessage}
+            </p>
+          )
+        }
+        {
+          apiErrorMessage &&
+          (
+            <p className={styles.errorMessage}>
+              {apiErrorMessage}
             </p>
           )
         }
@@ -83,11 +94,16 @@ class ImageSearch extends Component {
 }
 
 ImageSearch.propTypes = {
+  apiErrorMessage: PropTypes.string.isRequired,
   getImagesBySearchTerm: PropTypes.func.isRequired,
 }
+
+const mapStateToProps = state => ({
+  apiErrorMessage: state.images.errorMessage,
+})
 
 const mapDispatchToProps = {
   getImagesBySearchTerm: getImagesBySearchTermAndPage,
 }
 
-export default connect(null, mapDispatchToProps)(ImageSearch)
+export default connect(mapStateToProps, mapDispatchToProps)(ImageSearch)
