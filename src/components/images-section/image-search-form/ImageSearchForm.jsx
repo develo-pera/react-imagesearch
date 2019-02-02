@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { getImagesBySearchTermAndPage } from '../ImagesSection.actions'
+import { getImagesBySearchTerm } from '../ImagesSection.actions'
 
 import styles from './ImageSearchForm.module.scss'
 
@@ -21,7 +21,7 @@ class ImageSearch extends Component {
     event.preventDefault()
 
     const { lastSearchedTerm } = this.state
-    const { getImagesBySearchTerm } = this.props
+    const { boundGetImagesBySearchTerm } = this.props
 
     if (inputValue.trim() === '') {
       this.setState({
@@ -40,7 +40,7 @@ class ImageSearch extends Component {
         lastSearchedTerm: inputValue,
       })
 
-      getImagesBySearchTerm(inputValue)
+      boundGetImagesBySearchTerm(inputValue)
     }
   }
 
@@ -95,7 +95,7 @@ class ImageSearch extends Component {
 
 ImageSearch.propTypes = {
   apiErrorMessage: PropTypes.string.isRequired,
-  getImagesBySearchTerm: PropTypes.func.isRequired,
+  boundGetImagesBySearchTerm: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -103,7 +103,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  getImagesBySearchTerm: getImagesBySearchTermAndPage,
+  boundGetImagesBySearchTerm: getImagesBySearchTerm,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageSearch)

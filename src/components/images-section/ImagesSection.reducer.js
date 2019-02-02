@@ -48,6 +48,11 @@ export default function imagesReducer(state = INIT_STATE, action) {
         ...state,
         currentPage: action.payload.currentPage,
       }
+    case ACTION_TYPES.CLEAR_IMAGES_DATA:
+      return {
+        ...state,
+        fetchedImages: [],
+      }
     default:
       return state
   }
