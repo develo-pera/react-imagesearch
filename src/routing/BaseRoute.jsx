@@ -2,9 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 
-// import Header from '../common/header/Header'
-// import Footer from '../common/footer/Footer'
-
 // We can use this component in the future to create
 // AuthRoute and NonAuthRouth components to deal with
 // checking if the user is authenticated or not
@@ -16,9 +13,7 @@ class BaseRoute extends Route {
     } = this.props
     return (
       <React.Fragment>
-        {/* <Header /> */}
         {this.decideHowToRender(component, render)}
-        {/* <Footer /> */}
       </React.Fragment>
     )
   }
