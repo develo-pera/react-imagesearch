@@ -3,6 +3,8 @@ import axios from 'axios'
 import ACTION_TYPES from './ImagesSection.actionTypes'
 import API_ROUTES from './ImagesSection.apiRoutes';
 
+axios.defaults.headers.common.Authorization = `Client-ID ${process.env.REACT_APP_UNSPLASH_CLIENT_ID}`;
+
 const loadingInProgress = dispatch => (
   dispatch({
     type: ACTION_TYPES.FETCH_IMAGES_BY_SEARCH_TERM_IN_PROGRESS,
@@ -11,7 +13,7 @@ const loadingInProgress = dispatch => (
 
 const getImagesBySearchTermAndPageApi = (searchTerm, page) => {
   const searchTermQueryString = `&query=${searchTerm}`
-  const pageQueryString = `&page=${page}`
+  const pageQueryString = `?page=${page}`
 
   return axios({
     method: 'GET',
