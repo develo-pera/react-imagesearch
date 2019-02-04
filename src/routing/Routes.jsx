@@ -5,10 +5,14 @@ import { withRouter, Switch, Redirect } from 'react-router-dom'
 import BaseRoute from './BaseRoute'
 
 import Home from '../components/home/Home'
+import SingleImage from '../components/single-image/SingleImage'
 
 import ScrollToTop from '../components/common/scroll-to-top/ScrollToTop'
 
-import { HOME } from './Paths'
+import {
+  HOME,
+  SINGLE_IMAGE,
+} from './Paths'
 
 const Routes = () => (
   <ScrollToTop>
@@ -17,6 +21,11 @@ const Routes = () => (
         exact
         path={HOME}
         component={Home}
+      />
+      <BaseRoute
+        // exact
+        path={SINGLE_IMAGE}
+        component={SingleImage}
       />
       <Redirect from="*" to={HOME} />
     </Switch>

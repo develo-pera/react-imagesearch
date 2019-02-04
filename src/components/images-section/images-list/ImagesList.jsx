@@ -50,7 +50,7 @@ ImagesList.propTypes = {
     PropTypes.arrayOf(PropTypes.shape()),
   ]),
   searchedTerm: PropTypes.string.isRequired,
-  currentPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number,
   totalPageNumber: PropTypes.number,
   loadingImagesInProgress: PropTypes.bool.isRequired,
   getImagesBySearchTermAndPage: PropTypes.func.isRequired,
@@ -58,6 +58,7 @@ ImagesList.propTypes = {
 
 ImagesList.defaultProps = {
   cachedImages: null,
+  currentPage: null,
   imagesArrayForDisplay: null,
   totalPageNumber: 0,
 }

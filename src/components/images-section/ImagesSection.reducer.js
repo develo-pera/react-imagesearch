@@ -5,7 +5,7 @@ const INIT_STATE = {
   isError: false,
   errorMessage: '',
   isSuccess: false,
-  fetchedImages: null,
+  fetchedImages: [],
   searchedTerm: '',
   currentPage: null,
   totalPages: null,

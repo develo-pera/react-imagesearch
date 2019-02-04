@@ -10,7 +10,7 @@ import Emoji from '../../common/emoji/Emoji'
 
 import styles from './ImagesMosaic.module.scss'
 
-const renderMosaic = (images, columnNumber) => (
+const renderMosaic = (images, columnNumber, currentPage) => (
   <div className={styles.mosaic}>
     {
       reorderImagesForMosaicDisplay(images, columnNumber)
@@ -19,6 +19,8 @@ const renderMosaic = (images, columnNumber) => (
             key={image.id}
             imageUrl={image.urls.small}
             imageTitle={image.description}
+            photoId={image.id}
+            currentPage={currentPage}
           />
         ))
     }
@@ -51,7 +53,7 @@ const ImagesMosaic = ({
       // in ImagesMosaic.module.scss in order to work properly
         (
           <React.Fragment>
-            { renderMosaic(images, mosaicColumnNumber) }
+            { renderMosaic(images, mosaicColumnNumber, currentPage) }
             <ReactPaginate
               previousLabel="previous"
               nextLabel="next"

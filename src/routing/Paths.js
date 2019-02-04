@@ -1,4 +1,5 @@
 export const HOME = '/'
+export const SINGLE_IMAGE = '/page/:pageNumber/images/:id'
 
 // External
 export const KROON_STUDIO_WEBSITE = 'https://www.kroonstudio.com'

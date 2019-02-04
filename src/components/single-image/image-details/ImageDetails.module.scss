@@ -1,0 +1,72 @@
+@import '../../../styles//variables/colors';
+@import '../../../styles/variables/breakpoints';
+
+.imageDetails {
+  max-width: 1080px;
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include breakpoint(big-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail {
+  margin: 0 0 10px;
+  font-size: 13px;
+
+  &:nth-child(even) {
+    margin-left: 10px;
+
+    @include breakpoint(big-mobile) {
+      margin-left: 0;
+    }
+  }
+}
+
+.button {
+  height: 60px;
+  margin: 50px 0 10px 10px;
+  padding: 0 30px;
+  color: $white;
+  border: none;
+  background: $purple;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: .8;
+  }
+
+  @include breakpoint(big-mobile) {
+    margin: 0;
+  }
+}
+
+.link {
+  margin: 50px 10px 10px 0;
+
+  @include breakpoint(big-mobile) {
+    margin: 50px 0 20px 0;
+  }
+}
+
+.linkButton {
+  height: 60px;
+  width: 100%;
+  padding: 0 30px;
+  color: $white;
+  border: none;
+  background: $purple;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: .8;
+  }
+}
