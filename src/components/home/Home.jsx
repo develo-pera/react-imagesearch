@@ -6,7 +6,7 @@ import styles from './Home.module.scss'
 
 const Home = () => (
   <div className="container page-wrapper">
-    <h1 className={styles.title}>Welcome to KroonStudio Image Search</h1>
+    <h1 className={styles.title}>Welcome to React Image Search</h1>
     <ImagesSection />
   </div>
 )

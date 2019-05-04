@@ -1,4 +1,4 @@
-## KroonStudio Image Search
+## Simple React Image Search
 
 Setup steps to run on your development machine:
 
