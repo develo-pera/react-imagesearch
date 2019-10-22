@@ -1,6 +1,6 @@
 ## Simple React Image Search
 
-Setup steps to run on your development machine:
+🚀 Setup steps to run on your development machine:
 
 1. Git clone
 2. npm install or yarn install
