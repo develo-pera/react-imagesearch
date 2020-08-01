@@ -1,5 +1,7 @@
 ## Simple React Image Search
 
+Demo: https://image-picker.netlify.app
+
 🚀 Setup steps to run on your development machine:
 
 1. Git clone
